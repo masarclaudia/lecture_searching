@@ -27,12 +27,10 @@ import json
 def read_data(filename, field):
     with open("sequential.json", "r") as f:
         data_ = json.load(f)
-        if field not in data_:
+        if field not in data:
             return None
 
-        with open(filename, "r") as f:
-            data = json.load(f)
-        return data.get(field)
+        return data[field]
 
 def linear_search(path, target):
 
@@ -40,27 +38,34 @@ def linear_search(path, target):
     with open(path, "r") as f:
         data = json.load(f)
         position = []
-        for i in range(len(data)):
-            if data[i] == target:
-                position.append(i)
+        for i in range(len(data)):      #n
+            if data[i] == target:       #n
+                position.append(i)      #od 0 - n
         result = {"positions": position, "count": len(position)}
     return result
 
 
+def binary_search(sequence, target):
+    left = 0
+    right = len(sequence) - 1
 
+    while left <= (len(sequence) - 1):
+        stred = (left + right) // 2
+
+        if sequence[stred] == target:
+            return stred
+        elif sequence[stred] < target:
+            left = stred + 1
+        else:
+            right = stred - 1
+
+    return None
 
 def main():
-    unordered = read_data(file_name = "sequential.json", field = "unordered_numbers")
+    unordered = read_data(filename = "sequential.json", field = "unordered_numbers")
     target = 5
     linear_result = linear_search(unordered, target)
-
-
-def main():
-    pass
-
-
-
-
+    print(linear_result)
 
 if __name__ == "__main__":
     main()
