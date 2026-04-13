@@ -35,13 +35,13 @@ def read_data(filename, field):
 def linear_search(path, target):
 
     #path = "sequential.json"
-    with open(path, "r") as f:
-        data = json.load(f)
-        position = []
-        for i in range(len(data)):      #n
-            if data[i] == target:       #n
-                position.append(i)      #od 0 - n
-        result = {"positions": position, "count": len(position)}
+    # with open(path, "r") as f:
+    #     data = json.load(f)
+    position = []
+    for i in range(len(data)):      #n
+        if data[i] == target:       #n
+            position.append(i)      #od 0 - n
+    result = {"positions": position, "count": len(position)}
     return result
 
 
