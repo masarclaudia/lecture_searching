@@ -1,7 +1,7 @@
 from pathlib import Path
 import json
 
-print("skuska")
+
 def read_data(file_name, field):
     """
     Reads a JSON file and returns data for a given field.
@@ -21,6 +21,27 @@ def read_data(file_name, field):
     cwd_path = Path.cwd()
     
     file_path = cwd_path / file_name
+
+def linear_search(path, target):
+
+    import json
+    #path = "sequential.json"
+    with open(path, "r") as f:
+        data = json.load(f)
+        position = []
+        for i in range(len(data)):
+            if data[i] == target:
+                position.append(i)
+        result = {
+            "positions": position,
+            "count": len(position)
+        }
+    return result
+
+
+
+
+
 
 
 def main():
