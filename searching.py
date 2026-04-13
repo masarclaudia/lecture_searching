@@ -26,13 +26,13 @@ import json
 
 def read_data(filename, field):
     with open("sequential.json", "r") as f:
-        data_ = json.load(f)
+        data = json.load(f)
         if field not in data:
             return None
 
         return data[field]
 
-def linear_search(path, target):
+def linear_search(data, target):
 
     #path = "sequential.json"
     # with open(path, "r") as f:
@@ -63,9 +63,15 @@ def binary_search(sequence, target):
 
 def main():
     unordered = read_data(filename = "sequential.json", field = "unordered_numbers")
+    print(unordered)
     target = 5
     linear_result = linear_search(unordered, target)
     print(linear_result)
+
+    ordered_data = read_data("sequential.json", "ordered_numbers")
+
+    binary_result = binary_search(ordered_data, target)
+    print(binary_result)
 
 if __name__ == "__main__":
     main()
