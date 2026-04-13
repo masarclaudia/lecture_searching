@@ -22,6 +22,7 @@ def read_data(file_name, field):
     
     file_path = cwd_path / file_name
 
+#2
 import json
 
 def read_data(filename, field):
@@ -75,3 +76,29 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+#3
+
+def pattern_search(sequence, pattern):
+
+    position = set()
+
+    n = len(sequence)
+    m = len(pattern)
+
+    for i in range(n - m + 1):
+        match = True
+
+        for j in range(m):
+            if sequence[i + j] != pattern[j]:
+                match = False
+                break
+
+        if match:
+            position.add(i)
+    return position
+
+
+
+
