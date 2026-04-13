@@ -22,9 +22,20 @@ def read_data(file_name, field):
     
     file_path = cwd_path / file_name
 
+import json
+
+def read_data(filename, field):
+    with open("sequential.json", "r") as f:
+        data_ = json.load(f)
+        if field not in data_:
+            return None
+
+        with open(filename, "r") as f:
+            data = json.load(f)
+        return data.get(field)
+
 def linear_search(path, target):
 
-    import json
     #path = "sequential.json"
     with open(path, "r") as f:
         data = json.load(f)
@@ -32,20 +43,23 @@ def linear_search(path, target):
         for i in range(len(data)):
             if data[i] == target:
                 position.append(i)
-        result = {
-            "positions": position,
-            "count": len(position)
-        }
+        result = {"positions": position, "count": len(position)}
     return result
 
 
 
 
-
+def main():
+    unordered = read_data(file_name = "sequential.json", field = "unordered_numbers")
+    target = 5
+    linear_result = linear_search(unordered, target)
 
 
 def main():
     pass
+
+
+
 
 
 if __name__ == "__main__":
